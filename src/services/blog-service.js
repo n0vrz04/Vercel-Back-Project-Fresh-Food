@@ -10,20 +10,20 @@ exports.getAllBlogs = async () => {
     }
 }
 
-exports.insertBlog = async (title, image,description, author, date) => {
-    const query = `
-      INSERT INTO blogs (title, image,description, author, date) 
-      VALUES ($1, $2, $3, $4,$5) RETURNING id
-    `;
-    const values = [title, image, description, author,date];
+// exports.insertBlog = async (title, image,description, author, date) => {
+//     const query = `
+//       INSERT INTO blogs (title, image,description, author, date) 
+//       VALUES ($1, $2, $3, $4,$5) RETURNING id
+//     `;
+//     const values = [title, image, description, author,date];
   
-    try {
-      const result = await pool.query(query, values);
-      return result.rows[0].id;
-    } catch (error) {
-      console.error("Error inserting product:", error);
-    }
-  };
+//     try {
+//       const result = await pool.query(query, values);
+//       return result.rows[0].id;
+//     } catch (error) {
+//       console.error("Error inserting product:", error);
+//     }
+//   };
 
     exports.getBlogById = async (id) => {
         const query = "SELECT id, title, image, description, author, date FROM blogs WHERE id = $1";

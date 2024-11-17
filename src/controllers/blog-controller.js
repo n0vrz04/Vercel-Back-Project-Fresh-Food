@@ -13,21 +13,21 @@ exports.getAllBlogs = async (req, res) => {
     }
     };
 
-    exports.uploadBlog = async (req, res) => {
-        const { title, description, author ,date } = req.body;
-        const imagePath = req.file.path;
+    // exports.uploadBlog = async (req, res) => {
+    //     const { title, description, author ,date } = req.body;
+    //     const imagePath = req.file.path;
       
-        try {
-          const imageData = fs.readFileSync(imagePath);
-          const blogId = await blogService.insertBlog(title, imageData,description, author ,date);
-          fs.unlinkSync(imagePath);
+    //     try {
+    //       const imageData = fs.readFileSync(imagePath);
+    //       const blogId = await blogService.insertBlog(title, imageData,description, author ,date);
+    //       fs.unlinkSync(imagePath);
       
-          res.status(200).send(`Blog uploaded with ID: ${blogId}`);
-        } catch (error) {
-          console.error("Error uploading blog:", error);
-          res.status(500).send("Error uploading blog");
-        }
-      };
+    //       res.status(200).send(`Blog uploaded with ID: ${blogId}`);
+    //     } catch (error) {
+    //       console.error("Error uploading blog:", error);
+    //       res.status(500).send("Error uploading blog");
+    //     }
+    //   };
 
       exports.getBlogById = async (req, res) => {
         const blogId = req.params.id;
