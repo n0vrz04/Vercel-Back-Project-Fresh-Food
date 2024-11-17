@@ -13,21 +13,21 @@ exports.getAllProducts = async (req, res) => {
     }
     };
 
-exports.uploadProduct = async (req, res) => {
-  const { name, oldprice, newprice } = req.body;
-  const imagePath = req.file.path;
+// exports.uploadProduct = async (req, res) => {
+//   const { name, oldprice, newprice } = req.body;
+//   const imagePath = req.file.path;
 
-  try {
-    const imageData = fs.readFileSync(imagePath);
-    const productId = await productService.insertProduct(name, imageData, oldprice, newprice);
-    fs.unlinkSync(imagePath);
+//   try {
+//     const imageData = fs.readFileSync(imagePath);
+//     const productId = await productService.insertProduct(name, imageData, oldprice, newprice);
+//     fs.unlinkSync(imagePath);
 
-    res.status(200).send(`Product uploaded with ID: ${productId}`);
-  } catch (error) {
-    console.error("Error uploading product:", error);
-    res.status(500).send("Error uploading product");
-  }
-};
+//     res.status(200).send(`Product uploaded with ID: ${productId}`);
+//   } catch (error) {
+//     console.error("Error uploading product:", error);
+//     res.status(500).send("Error uploading product");
+//   }
+// };
 
 exports.getProductById = async (req, res) => {
   const productId = req.params.id;
